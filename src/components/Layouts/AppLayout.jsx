@@ -4,7 +4,7 @@ import Nav from '../Nav';
 
 function AppLayout() {
   return (
-      <div className="container-fluid w-vw vh-100 bg-dark text-white">
+      <div className="container-fluid w-vw h-100 bg-dark text-white">
           <Nav />
           <Outlet />
     </div>

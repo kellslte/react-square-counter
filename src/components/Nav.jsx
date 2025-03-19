@@ -1,7 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router";
+import { useBlogContext } from "../providers/BlogProvider";
 
-function Nav() {
+function Nav ()
+{
+  const {setSearch} = useBlogContext();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const searchTerm = e.target.search.value;
+    setSearch(searchTerm);
+  };
+
   return (
     <header data-bs-theme="dark">
       <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -37,11 +47,18 @@ function Nav() {
                   Counters
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="blog">
+                  Blog
+                </NavLink>
+              </li>
             </ul>
-            <form className="d-flex" role="search">
+            <form className="d-flex" role="search" onSubmit={handleSubmit}>
               <input
                 className="form-control me-2"
                 type="search"
+                name="search"
+                required
                 placeholder="Search"
                 aria-label="Search"
               />
